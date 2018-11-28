@@ -1,0 +1,45 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}</h4>
+          </div>
+          <div class="card-body">
+
+            <form #form="ngForm" (ngSubmit)="salvar(form.value)" >
+
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+
+                    <input matInput  placeholder="Perfil" type="text" name="nome" [(ngModel)]="nomeForm">
+
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <!--Semantico-->
+                </div>
+                <div class="col-md-4">
+                  <!--Semantico-->
+                </div>
+              </div>
+
+              <button mat-raised-button type="submit"  class="btn btn-outline-info pull-right">Confirmar</button>
+              <div class="clearfix"></div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

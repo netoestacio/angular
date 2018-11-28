@@ -34,12 +34,10 @@ import {MAT_CHECKBOX_CLICK_ACTION} from '@angular/material';
 
 
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
       HttpClientModule,
       ReactiveFormsModule,
     ComponentsModule,
@@ -52,6 +50,7 @@ import {MAT_CHECKBOX_CLICK_ACTION} from '@angular/material';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+
 
   ],
   providers: [

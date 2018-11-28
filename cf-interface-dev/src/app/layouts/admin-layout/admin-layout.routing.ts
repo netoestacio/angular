@@ -7,17 +7,26 @@ import {ClienteComponent} from '../../paginas/cliente/cliente.component';
 import {ClienteCadastroComponent} from '../../paginas/cliente/cliente-cadastro/cliente-cadastro.component';
 import {PerfilVerComponent} from '../../paginas/perfil/perfil-ver/perfil-ver.component';
 import {ClienteVerComponent} from '../../paginas/cliente/cliente-ver/cliente-ver.component';
+import {ConcessionariaCadastroComponent} from '../../paginas/concessionaria/concessionaria-cadastro/concessionaria-cadastro.component';
+import {ConcessionariaComponent} from '../../paginas/concessionaria/concessionaria.component';
 
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard',      component: DashboardComponent },
+
     { path: 'perfil',         component: PerfilComponent },
     { path: 'perfil/:id/editar', component: PerfilCadastroComponent },
     { path: 'perfil/:id/ver', component: PerfilVerComponent },
     { path: 'perfil/cadastro', component: PerfilCadastroComponent },
+
     { path: 'cliente',         component: ClienteComponent },
     { path: 'cliente/:id/editar', component: ClienteCadastroComponent },
     { path: 'cliente/cadastro', component: ClienteCadastroComponent },
     { path: 'cliente/:id/ver', component: ClienteVerComponent },
+
+    { path: 'concessionaria',         component: ConcessionariaComponent },
+    { path: 'concessionaria/:id/editar', component: ConcessionariaCadastroComponent },
+    { path: 'concessionaria/cadastro', component: ConcessionariaCadastroComponent },
+    { path: 'concessionaria/:id/ver', component: ConcessionariaCadastroComponent },
 
 ];

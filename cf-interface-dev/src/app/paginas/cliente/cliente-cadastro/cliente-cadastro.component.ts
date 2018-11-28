@@ -18,7 +18,7 @@ export class ClienteCadastroComponent extends Pagina implements OnInit, OnDestro
     public razaoSocial: string;
     public cnpj: string;
     public nomeCurto: string;
-    public ativo: boolean;
+    public ativo = true;
 
     public cliente: ICliente;
 
@@ -49,6 +49,11 @@ export class ClienteCadastroComponent extends Pagina implements OnInit, OnDestro
 
   ngOnDestroy() {
       this.espectador.unsubscribe();
+  }
+
+  salvar(value: ICliente) {
+        value.ativo = this.ativo;
+        console.log(value);
   }
 
   carregarSelecionado() {

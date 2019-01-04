@@ -1,0 +1,45 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header card-header-info">
+      <h4 class="card-title ">Modalidade-Tarifária
+       <!-- <button [routerLink]="['/tarifa/bandeira-tarifaria/bandeira-cadastro']"
+                class="card-title btn btn-outline-primary btn-sm" style="margin-left: 85%;margin-top: -10px;">Cadastrar</button> -->
+      </h4>
+
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+
+          <th>Descrição</th>
+
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let item of listaModalidades">
+            <td>{{ item.descricao }}</td>
+           <!-- <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary btn-sm"
+                        [routerLink]="[item.id,'ver']">Detalhes</button>
+
+                <button disabled type="button" class="btn btn-outline-primary btn-sm dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <button class="dropdown-item" disabled [routerLink]="[item.id,'editar']" >Editar</button>
+                  <button class="dropdown-item excluir" disabled >Excluir</button>
+                </div>
+              </div>
+            </td> -->
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

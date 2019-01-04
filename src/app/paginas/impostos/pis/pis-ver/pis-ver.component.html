@@ -1,0 +1,50 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title ">Dados do PIS/PASEP
+
+            <button [routerLink]="['/impostos/pis']"
+                    class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+              <i class="material-icons">undo</i>
+            </button>
+          </h4>
+
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+
+              <th>Concessionária</th>
+              <th>Tipo</th>
+              <th>Aliquota %</th>
+              <th>Mês</th>
+              <th>Ano</th>
+
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let pis of listaPis">
+                <td>{{ exibirNomeConcessionaria(pis.concessionariaId) }}</td>
+                <td>{{ pis.tipoPisPasep == 1 ? 'Normal' : 'Rural' }}</td>
+                <td>{{ pis.aliquota + '%' }}</td>
+                <td>{{ exibirMes(pis.mes) }}</td>
+                <td>{{ pis.ano }}</td>
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

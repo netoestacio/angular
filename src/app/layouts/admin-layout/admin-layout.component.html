@@ -1,0 +1,16 @@
+<div class="wrapper">
+
+    <div class="sidebar" data-color="danger"  *ngIf="viewService.valor === true"
+         data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(../../../assets/img/sidebar-4.jpg)"></div>
+    </div>
+
+    <div [ngClass]="viewService.valor === true ? 'main-panel half-width' : 'main-panel full-width' " >
+        <app-navbar></app-navbar>
+        <router-outlet></router-outlet>
+        <div *ngIf="isMaps('maps')">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}
+              <button [routerLink]="['/tarifa/resolucao']"
+                      class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                <i class="material-icons">undo</i>
+              </button>
+            </h4>
+          </div>
+          <div class="card-body" >
+
+            <form #form="ngForm" (ngSubmit)="salvar(form.value)" >
+
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="Nº Resolução" type="text" name="numero" required [value]="numero" [(ngModel)]="numero">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="Reajuste (%)" type="text" name="reajuste" required [value]="reajuste" [(ngModel)]="reajuste">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <!--Semantico-->
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <select matNativeControl placeholder="selecione o status" required [(ngModel)]="status" name="status">
+                      <option value="" disabled selected></option>
+                      <option value= 1 >Ativa</option>
+                      <option value= 2 >Revogada</option>
+                    </select>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="Anexo Base" type="text" name="anexoBase" required [value]="anexoBase" [(ngModel)]="anexoBase">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <!--Semantico-->
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                     <select matNativeControl placeholder="selecione a concessionária" required [value]="concessionariaId" [(ngModel)]="concessionariaId" name="concessionariaId">
+                      <option value="" disabled selected></option>
+                      <option value = 0 selected>Nenhum</option>
+                      <option *ngFor="let item of listaConcessionaria" [value]="item.id">
+                        {{ item.nomeCurto }}
+                      </option>
+                    </select>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker3" placeholder="Data de Publicação"  name="dataPublicacao" [(ngModel)]="dataPublicacao">
+                    <mat-datepicker-toggle matSuffix [for]="picker3">
+                      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <!--Semantico-->
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker" placeholder="Inicio de Vigência"  name="inicioVigencia" [(ngModel)]="inicioVigencia">
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker2" placeholder="Fim de Vigência"  name="fimVigencia" [(ngModel)]="fimVigencia">
+                    <mat-datepicker-toggle matSuffix [for]="picker2">
+                      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+                  <!--Semantico-->
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-3">
+                  <mat-checkbox class="example-margin" [(ngModel)]=icms name="icms" >{{icms === true ? 'Inclui ICMS: Sim' : 'Inclui ICMS: Não' }}</mat-checkbox>
+                </div>
+                <div class="col-md-3">
+                  <mat-checkbox class="example-margin" [(ngModel)]=pis name="pis" >{{pis === true ? 'Inclui PIS/PASEP: Sim' : 'Inclui PIS/PASEP:  Não' }}</mat-checkbox>
+                </div>
+                <div class="col-md-3">
+                  <mat-checkbox class="example-margin" [(ngModel)]=cofins name="cofins" >{{cofins === true ? 'Inclui COFINS: Sim' : 'Inclui COFINS: Não' }}</mat-checkbox>
+                </div>
+                <div class="col-md-3">
+                  <!--Semantico-->
+                </div>
+              </div>
+
+
+              <button mat-raised-button type="submit"  class="btn btn-outline-info pull-right">Confirmar</button>
+              <div class="clearfix"></div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

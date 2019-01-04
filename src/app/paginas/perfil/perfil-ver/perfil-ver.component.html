@@ -1,0 +1,40 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}
+              <button [routerLink]="['/perfil']"
+                      class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                <i class="material-icons">undo</i>
+              </button>
+            </h4>
+          </div>
+          <div class="card-body">
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th>Nome</th>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let perfil of listaPerfis">
+                  <td>{{ perfil.nome }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

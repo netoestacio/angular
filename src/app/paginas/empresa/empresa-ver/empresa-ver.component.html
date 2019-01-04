@@ -1,0 +1,47 @@
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title ">{{ titulo }}
+            <button [routerLink]="['/empresa']"
+                    class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+              <i class="material-icons">undo</i>
+            </button>
+          </h4>
+
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+
+              <th>Razão Social</th>
+              <th>CNPJ</th>
+              <th>Nome Fantasia</th>
+              <th>Status</th>
+
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let empresa of empresas">
+                <td>{{ empresa.razaoSocial }}</td>
+                <td>{{ aplicaMascara(empresa.cnpj) }}</td>
+                <td>{{ empresa.nomeCurto }}</td>
+                <td>{{ empresa.status === 1 ? 'Ativo' : 'Inativo' }}</td>
+
+              </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

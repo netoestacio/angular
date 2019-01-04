@@ -1,0 +1,85 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}
+              <button [routerLink]="['/cliente']"
+                      class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                <i class="material-icons">undo</i>
+              </button>
+            </h4>
+          </div>
+          <div class="card-body" >
+
+            <form #form="ngForm" (ngSubmit)="salvar(form.value)" >
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+
+                    <input matInput  placeholder="Razão Social" type="text" name="razaoSocial" required [(ngModel)]="razaoSocial">
+
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+
+                    <input matInput  placeholder="Nome Fantasia" type="text" name="nomeCurto" required [(ngModel)]="nomeCurto">
+
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-checkbox class="example-margin" [(ngModel)]=statusChk name="statusChk" >{{ statusChk === false ? 'Inativo' : 'Ativo' }}</mat-checkbox>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+
+                    <input matInput  placeholder="Cnpj" type="text" name="cnpj"
+                           [textMask]="{mask: mask}"
+                           required [(ngModel)]="cnpj">
+
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+
+                  <mat-form-field>
+                    <select matNativeControl placeholder="selecione o gestor" required [(ngModel)]="gestorId" name="gestorId">
+                      <option value="" disabled selected></option>
+                      <option value = 0 selected>Nenhum</option>
+                      <option *ngFor="let item of gestores" [value]="item.id">
+                        {{ item.nome }}
+                      </option>
+                    </select>
+                  </mat-form-field>
+
+                </div>-
+
+
+
+              </div>
+
+              <button mat-raised-button type="submit"  class="btn btn-outline-info pull-right">Confirmar</button>
+              <div class="clearfix"></div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

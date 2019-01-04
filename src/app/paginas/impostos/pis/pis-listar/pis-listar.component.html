@@ -1,0 +1,53 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header card-header-info">
+      <h4 class="card-title ">PIS/PASEP
+        <button [routerLink]="['/impostos/pis/pis-cadastro']"
+                class="card-title btn btn-outline-primary btn-sm status-wrapper" >Cadastrar</button>
+      </h4>
+
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+
+            <th>Concessionária</th>
+            <th>Tipo</th>
+            <th>Aliquota %</th>
+            <th>Mês</th>
+            <th>Ano</th>
+            <th colspan="2">Ações</th>
+
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let pis of listaPis">
+            <td>{{ exibirNomeConcessionaria(pis.concessionariaId) }}</td>
+            <td>{{ pis.tipoPisPasep == 1 ? 'Normal' : 'Rural' }}</td>
+            <td>{{ pis.aliquota + '%' }}</td>
+            <td>{{ exibirMes(pis.mes) }}</td>
+            <td>{{ pis.ano }}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary btn-sm"
+                        [routerLink]="[pis.id,'ver']">Detalhes</button>
+
+                <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <button class="dropdown-item" [routerLink]="[pis.id, 'editar']">Editar</button>
+                  <button class="dropdown-item excluir" (click)="deletarPis(pis.id)">Excluir</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

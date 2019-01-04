@@ -1,0 +1,47 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title ">Dados Bandeira
+            <button [routerLink]="['/tarifa/bandeira-tarifaria']"
+                    class="card-title btn btn-outline-primary btn-sm status-wrapper" style="margin-top: -10px;">
+              <i class="material-icons">undo</i>
+            </button>
+          </h4>
+
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+
+                <th>Tipo</th>
+                <th>Inicio de Vigência</th>
+                <th>Fim de Vigência</th>
+                <th>Observação</th>
+
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let item of listaBandeiras">
+                <td>{{ exibirBandeira(item.tipoBandeira )}}</td>
+                <td>{{ item.inicioVigencia | date:'dd/MM/yyyy' }}</td>
+                <td>{{ item.fimVigencia | date:'dd/MM/yyyy' }}</td>
+                <td>{{ item.observacao }}</td>
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,514 @@
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="col-md-12">
+
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-info">
+                    <h4 class="card-title ">Dados da Unidade
+                        <button [routerLink]="['/unidade']"
+                                class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                            <i class="material-icons">undo</i>
+                        </button>
+                    </h4>
+
+                </div>
+                <div class="card-body">
+                    <div class="card"> <!--Informação Basica-->
+                        <mat-tab-group>
+
+                            <mat-tab label="Informações Básicas">
+                                <div class="card-body" >
+
+                                    <div class=" row" style="margin-top: 10px;">
+                                        <div class="col-md-7">
+                                            <!--Semantico-->
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <div class="status-wrapper">
+                                                <p>
+                                                    <b>{{ statusChk === false ? 'Inativo' : 'Ativo' }} : </b><mat-checkbox class="example-margin" [value]="statusChk" [(ngModel)]=statusChk name="statusChk" disabled ></mat-checkbox>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <p>
+                                                <b>Cliente:</b> {{ clienteNome }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                               <p>
+                                                   <b>Empresa:</b> {{ empresaNome }}
+                                               </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                               <p>
+                                                   <b>Concessionária:</b> {{ concesionariaNome }}
+                                               </p>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>Razão Social:</b>  {{ razaoSocial }}
+                                                </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>Nome Fantasia:</b>  {{ nomeCurto }}
+                                                </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>Perfil:</b>  {{ perfilNome }}
+                                                </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>CNPJ:</b>  {{ cnpj }}
+                                                </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>Cnpj Adicional:</b>  {{ cnpjadicional }}
+                                                </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>Cnpj Site:</b>  {{ cnpjsite }}
+                                                </p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>Nº Pasta:</b>  {{ pasta }}
+                                                </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p>
+                                                <b style="margin-right: 5px;">Isento de I.E</b>
+                                                <mat-checkbox class="example-margin" [(ngModel)]=isentoIE name="isentoIE" disabled ></mat-checkbox>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                                <p>
+                                                    <b>Conjunto Elétrico:</b>  {{ conjuntoEletrico }}
+                                                </p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row" *ngIf="isentoIE !== true">
+
+                                        <div class="col-md-3">
+                                                <p>
+                                                    <b>Instalação:</b>  {{ instalacao }}
+                                                </p>
+                                        </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Inscrição Estadual:</b>  {{ inscricaoEstadual }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3" >
+                                                <p>
+                                                    <b>Data Inicio:</b>  {{ datainicio | date:'dd/MM/yyyy' }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3" >
+                                                <p>
+                                                    <b>Data Fim:</b>  {{ dataFim | date:'dd/MM/yyyy' }}
+                                                </p>
+                                            </div>
+                                    </div>
+
+
+                                    <div class="row" *ngIf="isentoIE !== false">
+
+                                        <div class="col-md-4">
+                                            <p>
+                                                <b>Instalação:</b>  {{ instalacao }}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-md-4" >
+                                            <p>
+                                                <b>Data Inicio:</b>  {{ datainicio | date:'dd/MM/yyyy' }}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-md-4" >
+                                            <p>
+                                                <b>Data Fim:</b>  {{ dataFim | date:'dd/MM/yyyy' }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </mat-tab>
+
+                            <mat-tab label="Ficha Técnica">
+                                <div class="card-body" >
+
+                                    <div class="row" style="margin-top: 10px;">
+
+                                        <div class="col-md-3">
+                                                <p>
+                                                    <b style="margin-right: 5px;">Banco de Capacitor:</b>
+                                                    <mat-checkbox class="example-margin" disabled [(ngModel)]=bancoCapacitor name="bancoCapacitor" ></mat-checkbox>
+                                                </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                                <p>
+                                                    <b style="margin-right: 5px;">Telemetria:</b>
+                                                    <mat-checkbox class="example-margin" disabled [(ngModel)]=telemetria name="telemetria" ></mat-checkbox>
+                                                </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                                <p>
+                                                    <b style="margin-right: 5px;">Consumo Estimado:</b>
+                                                    <mat-checkbox class="example-margin" disabled [(ngModel)]=consumoEstimado name="consumoEstimado" ></mat-checkbox>
+                                                </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                                <p>
+                                                    <b style="margin-right: 5px;">Crédito de Icms:</b>
+                                                    <mat-checkbox class="example-margin" disabled [(ngModel)]=creditoIcms name="creditoIcms" ></mat-checkbox>
+                                                </p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-3">
+                                                <p>
+                                                    <b>Contrato:</b>
+                                                </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                                <p>
+                                                    <b>Classe:</b>
+                                                </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                          <p>
+                                              <b>SubGrupo:</b>
+                                          </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <!--Semantico-->
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-3">
+                                            <p>
+                                                <b>Tensão:</b> {{ exibeTensao(tensaoId) }}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                           <p>
+                                               <b>Incentivo TUSD:</b> {{ incentivoTusd }}%
+                                           </p>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                           <p>
+                                               <b>Perdas (%):</b> {{ perdasPorcento }}%
+                                           </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <!---->
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </mat-tab>
+
+                            <mat-tab label="Informação Extra">
+                                <div class="card-body">
+                                    <div class="row" style="margin-top: 10px;">
+
+                                        <div class="col-md-6">
+                                          <p>
+                                              <b>Localização:</b>
+                                          </p>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                           <p>
+                                               <b>Cod. Unidade Cliente: </b> {{cuc}}
+                                           </p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                           <p>
+                                               <b>SCDA (Latitude): </b> {{scda}}
+                                           </p>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                           <p>
+                                               <b>SGM (Longitude): </b> {{sgm}}
+                                           </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                            </mat-tab>
+
+                            <mat-tab label="Endereço">
+                                <div class="card-body">
+                                    <div class="col-md-12" style="margin-top: 10px;">
+
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Tipo Logradouro: </b> {{exibeLogradouro(localizacaoId)}}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Logradouro: </b> {{ logradouro }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Bairro: </b> {{ bairro }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Nº: </b> {{ numero }}
+                                                 </p>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Cep: </b> {{ cep }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Estado: </b> {{ exibeEstado(estadoId) }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Cidade: </b> {{ exibeCidade(cidadeId) }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Complemento: </b> {{ complemento }}
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </mat-tab>
+
+                            <mat-tab label="Financeiro">
+                                <div class="card-body">
+                                    <div class="col-md-12" style="margin-top: 10px;">
+
+                                        <div class=" row">
+                                            <div class="col-md-7">
+                                                <!--  <h4 class="card-title">Informações Básicas</h4>-->
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <div class="status-wrapper">
+                                                    <p>
+                                                        <b>Pagamento Agrupado: </b> <mat-checkbox class="example-margin" [(ngModel)]=pagamentoAgrupado name="pagamentoAgrupado" disabled ></mat-checkbox>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <b>Faturamento: </b> {{ exibeFaturamento(faturamento) }}
+                                                </p>
+
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <b>Forma Pagamento: </b> {{ formaPagamento == 1 ? 'Boleto Bancário' : 'Débito Automático' }}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <!--Semantico-->
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+
+                                                <p>
+                                                    <b>Código Pagamento: </b> {{ codigoPagamento }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <b>Desconto Irrigação (%): </b> {{ descontoIrrigacao }}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <b>Centro Custo : </b> {{ centroCusto }}
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </mat-tab>
+
+                            <mat-tab label="Eficiência energética">
+                                <div class="card-body">
+                                    <div class="col-md-12" style="margin-top: 10px;">
+
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>LED : </b> <mat-checkbox class="example-margin"  disabled [(ngModel)]=led name="led" ></mat-checkbox>
+                                                </p>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>FotoVoltaico: </b>  <mat-checkbox class="example-margin" disabled [(ngModel)]=fotovoltaico name="fotovoltaico" ></mat-checkbox>
+                                                </p>
+
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Ar: </b><mat-checkbox class="example-margin" disabled [(ngModel)]=ar name="ar" ></mat-checkbox>
+                                                </p>
+
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <p>
+                                                    <b>Iluminação: </b> <mat-checkbox class="example-margin" disabled [(ngModel)]=iluminacao name="iluminacao" ></mat-checkbox>
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </mat-tab>
+
+                            <mat-tab label="Contato">
+                                <div class="col-md-6" style="margin-top: 10px;">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr *ngFor="let contato of contatos">
+                                                <td>{{ contato.nome }}</td>
+                                                <td>{{ contato.ocupacao }}</td>
+                                                <td>{{ contato.email }}</td>
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </mat-tab>
+
+
+                        </mat-tab-group>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

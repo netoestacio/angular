@@ -1,0 +1,114 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title ">Resolução-Tarifária
+            <button [routerLink]="['/tarifa/resolucao']"
+                    class="card-title btn btn-outline-primary btn-sm status-wrapper" style="margin-top: -10px;">
+              <i class="material-icons">undo</i>
+            </button>
+          </h4>
+
+        </div>
+        <div class="card-body">
+         <mat-tab-group>
+           <mat-tab label="Dados Resolução">
+
+             <div class="row" >
+               <div class="col-md-4">
+                 <p>
+                   <b>Status: </b>{{ statusNome }}
+                 </p>
+
+               </div>
+
+               <div class="col-md-4">
+                 <p>
+                   <b>Concessionária:</b> {{ concessionariaNome }}
+                 </p>
+               </div>
+
+               <div class="col-md-4">
+                 <!--Semantico-->
+               </div>
+
+             </div>
+             <div class="row">
+
+               <div class="col-md-4">
+                 <p>
+                   <b>Nº Resolução:</b> {{ numero }}
+                 </p>
+
+               </div>
+
+               <div class="col-md-4">
+                 <p>
+                   <b>Reajuste (%):</b> {{ reajuste }}
+                 </p>
+               </div>
+
+               <div class="col-md-4">
+                 <p>
+                   <b>Anexo Base:</b> {{anexoBase}}
+                 </p>
+
+               </div>
+
+
+             </div>
+
+             <div class="row" >
+
+               <div class="col-md-4">
+                 <p>
+                   <b>Data de Publicação:</b> {{dataPublicacao | date:'dd/MM/yyyy'}}
+                 </p>
+
+               </div>
+
+               <div class="col-md-4">
+                 <p>
+                   <b>Inicio de Vigência:</b>{{inicioVigencia | date:'dd/MM/yyyy'}}
+                 </p>
+
+               </div>
+
+               <div class="col-md-4">
+                 <p>
+                   <b>Fim de Vigência:</b>{{fimVigencia | date:'dd/MM/yyyy' }}
+                 </p>
+               </div>
+
+             </div>
+
+             <div class="row" >
+
+               <div class="col-md-4">
+                 <p>
+                   <b style="margin-right: 10px;">{{icms === true ? 'Inclui ICMS: Sim' : 'Inclui ICMS: Não' }}:</b><mat-checkbox disabled class="example-margin" [(ngModel)]=icms name="icms" ></mat-checkbox>
+                 </p>
+               </div>
+               <div class="col-md-4">
+                 <p>
+                   <b style="margin-right: 10px;">{{pis === true ? 'Inclui PIS/PASEP: Sim' : 'Inclui PIS/PASEP:  Não' }}:</b><mat-checkbox disabled class="example-margin" [(ngModel)]=pis name="pis" ></mat-checkbox>
+                 </p>
+
+               </div>
+               <div class="col-md-4">
+                 <p>
+                   <b style="margin-right: 10px;">{{cofins === true ? 'Inclui COFINS: Sim' : 'Inclui COFINS: Não' }}:</b><mat-checkbox disabled class="example-margin" [(ngModel)]=cofins name="cofins" ></mat-checkbox>
+                 </p>
+               </div>
+             </div>
+
+           </mat-tab>
+
+         </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

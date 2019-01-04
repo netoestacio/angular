@@ -1,0 +1,150 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}
+              <button [routerLink]="['/tarifa/modelo-tarifario/']"
+                      class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                <i class="material-icons">undo</i>
+              </button>
+            </h4>
+          </div>
+          <div class="card-body">
+
+            <form #form="ngForm" (ngSubmit)="salvar()" >
+
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h6 class="card-title">Selecione</h6>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+
+                    <div class="col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <input matInput  placeholder="Descrição" type="text" name="descricaoModelo" required  [value]="descricaoModelo" [(ngModel)]="descricaoModelo">
+                      </mat-form-field>
+                    </div>
+
+                    <div class="col-md-4">
+                      <mat-form-field>
+                        <select matNativeControl placeholder="Sub-Grupo" [(ngModel)]="subGrupoNome" name="subGrupoNome" (change)="exibeSubGrupo()" >
+                          <option value="" disabled ></option>
+                          <option value = 0 selected>Nenhum</option>
+                          <option *ngFor="let sub of listaSubgrupo" value="{{ sub.descricao }}">{{ sub.descricao }}</option>
+                        </select>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="col-md-4">
+                      <mat-form-field>
+                        <select matNativeControl placeholder="Modalidade" [(ngModel)]="modalidadeNome" name="modalidadeNome" (change)="exibeModalidade()" >
+                          <option value="" disabled ></option>
+                          <option value = 0 selected>Nenhum</option>
+                          <option *ngFor="let mod of listaModalidade" value="{{ mod.descricao  }}">{{ mod.descricao }}</option>
+                        </select>
+                      </mat-form-field>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header card-header-info">
+                      <h6 class="card-title">Selecione o Componente</h6>
+                    </div>
+                    <div class="card-body row">
+                      <div class="col-md-8">
+                        <mat-form-field>
+                          <select matNativeControl placeholder="Descrição" [(ngModel)]="componenteId" name="componenteId" >
+                            <option value="" disabled ></option>
+                            <option *ngFor="let cp of listaComponentes" value="{{ cp.id }}">
+                              {{ cp.descricao }} -- {{ cp.tipoComponenteTarifario == 1 ? 'TE' : 'TUSD' }}
+                            </option>
+                          </select>
+                        </mat-form-field>
+                      </div>
+                     <!-- <div class="col-md-4">
+                        <mat-form-field>
+                          <select matNativeControl placeholder="Tipo" [(ngModel)]="tipoComponente" name="tipoComponente"  >
+                            <option value="" disabled ></option>
+                            <option value="{{1}}" >TUSD</option>
+                            <option value="{{2}}" >TE</option>
+                          </select>
+                        </mat-form-field>
+                      </div> -->
+                      <div class="col-md-4">
+                        <a class="btn btn-outline-success btn-sm " (click)="adicionarComponente(); " >
+                          <i class="material-icons">add</i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header card-header-info">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5 class="card-title"> {{ descricaoModelo }} </h5>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5 class="card-title"> {{ subGrupoNome }} </h5>
+                        </div>
+                        <div class="col-md-6">
+                          <h5 class="card-title"> {{ modalidadeNome }} </h5>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="card-body row" *ngFor="let item of listaComponentesView">
+
+                      <div class="col-md-4">
+                        <p>{{item.descricao}}</p>
+                      </div>
+                      <div class="col-md-4">
+                        <p>{{ item.tipoComponenteTarifario == 1 ? 'TE' : 'TUSD' }}</p>
+                      </div>
+                      <div class="col-md-4">
+                        <a class="btn btn-outline-danger btn-sm " (click)="removerComponente(item); " >
+                          <i class="material-icons">clear</i>
+                        </a>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <button mat-raised-button type="submit"  class="btn btn-outline-success status-wrapper" style="margin-right: 1%;">Confirmar</button>
+                  <div class="clearfix"></div>
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

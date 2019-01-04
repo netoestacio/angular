@@ -1,0 +1,77 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}
+              <button [routerLink]="['/tarifa/modelo-tarifario/']"
+                      class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                <i class="material-icons">undo</i>
+              </button>
+            </h4>
+          </div>
+          <div class="card-body">
+
+            <form #form="ngForm" >
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <p>
+                     <b>Descrição: </b> {{descricaoModelo}}
+                  </p>
+
+                </div>
+
+                <div class="col-md-4">
+                  <p>
+                      <b>SubGrupo: </b>{{ subGrupoNome }}
+                  </p>
+
+                </div>
+
+                <div class="col-md-4">
+                  <p>
+                     <b>Modalidade: </b> {{ modalidadeNome }}
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <th>Componente Tarifário</th>
+                          <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          <tr *ngFor="let x of listaComponentes">
+                              <td> {{ x.descricao }} </td>
+                               <td> {{ x.tipoComponenteTarifario === 1 ? 'TUSD' : 'TE'}} </td>
+                          </tr>
+                    </tbody>
+                </table>
+              </div>
+
+
+            <!--  <button mat-raised-button type="submit"  class="btn btn-outline-success pull-right">Confirmar</button> -->
+              <div class="clearfix"></div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

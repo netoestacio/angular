@@ -1,0 +1,159 @@
+
+
+  <div class="main-content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-info">
+              <h4 class="card-title">{{ titulo }}
+                <button [routerLink]="['/concessionaria']"
+                        class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                  <i class="material-icons">undo</i>
+                </button>
+              </h4>
+            </div>
+            <div class="card-body">
+
+              <form #form="ngForm" (ngSubmit)="salvar(form.value)" >
+
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput  placeholder="Razão Social" type="text" name="razaoSocial" required [(ngModel)]="razaoSocial">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+
+                      <input matInput  placeholder="Nome Fantasia" type="text" name="nomeCurto" [(ngModel)]="nomeCurto">
+
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput  placeholder="Cnpj" type="text" name="cnpj"
+                             [textMask]="{mask: mask}"
+                             required [(ngModel)]="cnpj">
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput  placeholder="Email" type="email" name="email" [(ngModel)]="email">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput  placeholder="WebSite" type="text" name="website" [(ngModel)]="website">
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput [matDatepicker]="picker" placeholder="Data Inicio"
+                             name="dataInicioOperacao" [value]="dataInicioOperacao" [(ngModel)]="dataInicioOperacao">
+                      <mat-datepicker-toggle matSuffix [for]="picker">
+                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput [matDatepicker]="picker2" placeholder="Data Fim"
+                             name="dataFimOperacao" [value]="dataFimOperacao" [(ngModel)]="dataFimOperacao">
+                      <mat-datepicker-toggle matSuffix [for]="picker2">
+                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <mat-checkbox class="example-margin" [value]="agua" [(ngModel)]="agua" name="agua" >Água</mat-checkbox>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-checkbox class="example-margin" [value]="energia" [(ngModel)]="energia" name="energia" required > Energia</mat-checkbox>
+                  </div>
+
+
+                  <div class="col-md-3">
+                    <mat-checkbox class="example-margin" [value]="telefonia" [(ngModel)]="telefonia" name="telefonia" required > Telefonia</mat-checkbox>
+                  </div>
+
+                  <div class="col-md-3">
+                    <!--Semantico-->
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field>
+                      <select matNativeControl placeholder="Mês de Reajuste" [(ngModel)]="mesReajuste" name="mesReajuste">
+                          <option value="" disabled selected></option>
+                        <option value = 0 selected>Nenhum</option>
+                          <option value = 1 >Janeiro</option>
+                          <option value = 2 >Fevereiro</option>
+                          <option value = 3 >Março</option>
+                          <option value = 4 >Abril</option>
+                          <option value = 5 >Maio</option>
+                          <option value = 6 >Junho</option>
+                          <option value = 7 >Julho</option>
+                          <option value = 8 >Agosto</option>
+                          <option value = 9 >Setembro</option>
+                          <option value = 10 >Outubro</option>
+                          <option value = 11 >Novembro</option>
+                          <option value = 12 >Dezembro</option>
+                        </select>
+                    </mat-form-field>
+                  </div>
+
+                 <!-- <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput  placeholder="Desconto ICMS" type="number" name="descontoICMS" [(ngModel)]="descontoICMS">
+                    </mat-form-field>
+                  </div> -->
+
+                  <div class="col-md-4">
+                    <!--Semantico-->
+                  </div>
+
+                </div>
+
+                <button mat-raised-button type="submit"  class="btn btn-outline-success pull-right">Confirmar</button>
+                <div class="clearfix"></div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+

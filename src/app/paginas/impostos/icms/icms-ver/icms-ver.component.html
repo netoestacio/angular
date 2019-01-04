@@ -1,0 +1,48 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title ">Dados do ICMS
+            <button [routerLink]="['/impostos/icms']"
+                    class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+              <i class="material-icons">undo</i>
+            </button>
+          </h4>
+
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+
+                <th>Concessionária</th>
+                <th>Aliquota (%)</th>
+                <th>Inicio de Vigência</th>
+                <th>Fim de Vigência</th>
+
+
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let icms of listaIcms">
+                <td>{{ exibirNomeConcessionaria(icms.concessionariaId) }}</td>
+                <td>{{ icms.aliquota + '%' }}</td>
+                <td>{{ icms.inicioVigencia | date:'dd/MM/yyyy' }}</td>
+                <td>{{ icms.fimVigencia | date:'dd/MM/yyyy' }}</td>
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

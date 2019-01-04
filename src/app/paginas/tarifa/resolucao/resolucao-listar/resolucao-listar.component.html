@@ -1,0 +1,50 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header card-header-info">
+      <h4 class="card-title ">Resolução-Tarifária
+         <button [routerLink]="['/tarifa/resolucao/resolucao-cadastro']"
+                 class="card-title btn btn-outline-primary btn-sm status-wrapper" >Cadastrar</button>
+      </h4>
+
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+
+            <th>Nº Resolução</th>
+            <th>Data Publicação</th>
+            <th>Status</th>
+
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let item of listaResolucao">
+            <td>{{ item.numero }}</td>
+            <td>{{ item.dataPublicacao | date:'dd/MM/yyyy' }}</td>
+            <td>{{ item.statusResolucao === 1 ? 'Ativa' : 'Revogada' }}</td>
+
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary btn-sm"
+                        [routerLink]="[item.id,'ver']">Detalhes</button>
+
+                <button  type="button" class="btn btn-outline-primary btn-sm dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <button class="dropdown-item"  [routerLink]="[item.id,'editar']" >Editar</button>
+                  <button class="dropdown-item excluir" (click)="deletarResolucao(item.id)" >Excluir</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

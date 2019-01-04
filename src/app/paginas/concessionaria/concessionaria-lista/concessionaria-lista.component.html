@@ -1,0 +1,53 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header card-header-info">
+      <h4 class="card-title ">Concessionárias
+        <button [routerLink]="['/concessionaria/cadastro']"
+                class="card-title btn btn-outline-primary btn-sm status-wrapper" >Cadastrar</button>
+      </h4>
+
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+
+          <th>Razão Social</th>
+          <th>CNPJ</th>
+          <th>Nome Fantasia</th>
+          <th>Tipo</th>
+          <th>Data Inicio</th>
+
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let concessionaria of concessionarias">
+            <td>{{ concessionaria.razaoSocial }}</td>
+            <td>{{ aplicaMascara(concessionaria.cnpj) }}</td>
+            <td>{{ concessionaria.nomeCurto }}</td>
+
+            <td>{{ exibeServico(concessionaria) }}</td>
+
+            <td>{{ concessionaria.dataInicioOperacao | date:'dd/MM/yyyy'}}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary btn-sm" [routerLink]="[concessionaria.id,'ver']">Detalhes</button>
+                <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <button class="dropdown-item" [routerLink]="[concessionaria.id, 'editar']">Editar</button>
+                  <button class="dropdown-item excluir" (click)="deletarConcessionaria(concessionaria.id)">Excluir</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

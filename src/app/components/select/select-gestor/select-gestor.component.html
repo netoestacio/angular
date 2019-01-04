@@ -1,0 +1,11 @@
+
+<mat-form-field>
+  <select matNativeControl placeholder="selecione o gestor"
+          (change)="emitirGestor($event.target.value)"
+          [(ngModel)]="gestorId" name="gestorId">
+    <option value="" disabled selected></option>
+    <option *ngFor="let item of gestores" [value]="item.id">
+      {{ item.nome }}
+    </option>
+  </select>
+</mat-form-field>

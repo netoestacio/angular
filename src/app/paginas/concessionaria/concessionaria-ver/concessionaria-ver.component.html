@@ -1,0 +1,52 @@
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title ">Concessionárias
+            <button [routerLink]="['/concessionaria']"
+                    class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+              <i class="material-icons">undo</i>
+            </button>
+          </h4>
+
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+
+              <th>Razão Social</th>
+              <th>CNPJ</th>
+              <th>Nome Fantasia</th>
+              <th>Tipo</th>
+              <th>Data Inicio</th>
+
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let concessionaria of concessionarias">
+                <td>{{ concessionaria.razaoSocial }}</td>
+                <td>{{ aplicaMascara(concessionaria.cnpj) }}</td>
+                <td>{{ concessionaria.nomeCurto }}</td>
+
+                <td>{{ concessionaria.agua == true && concessionaria.energia == true ?
+                  'Água | Energia' : concessionaria.energia == true && concessionaria.agua == false ? 'Energia' : varAgua }}</td>
+
+                <td>{{ concessionaria.dataInicioOperacao | date:'dd/MM/yyyy' }}</td>
+
+              </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,244 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card" style="background-color: lightgrey">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}</h4>
+            <button [routerLink]="['/tarifa']"
+                    class="card-title btn btn-outline-primary btn-sm status-wrapper" style="margin-top: -10px;">
+              <i class="material-icons">undo</i>
+            </button>
+
+          </div>
+          <div class="card-body">
+            <form #form="ngForm" (ngSubmit)="salvar()" >
+
+              <div  class="card linha">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">Selecione</h4>
+                </div>
+                <div class="card-body row">
+
+                  <div class="row col-md-12">
+
+                    <div class="col-md-6">
+
+                      <mat-form-field>
+                        <select matNativeControl placeholder="selecione a resolução" required [(ngModel)]="resolucaoId" name="resolucaoId">
+                          <option value="" disabled selected></option>
+                          <option value = 0 selected>Nenhum</option>
+                          <option *ngFor="let resItem of listaResolucoes" [value]="resItem.id">
+                            {{ resItem.numero }}
+                          </option>
+                        </select>
+                      </mat-form-field>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                      <mat-form-field>
+                        <select matNativeControl placeholder="selecione a modalidade" required [(ngModel)]="modalidadeId" name="modalidadeId">
+                          <option value="" disabled selected></option>
+                          <option value = 0 selected>Nenhum</option>
+                          <option *ngFor="let moditem of listaModalidade" [value]="moditem.id">
+                            {{ moditem.descricao }}
+                          </option>
+                        </select>
+                      </mat-form-field>
+
+                    </div>
+
+                  </div>
+
+                  <div class="row col-md-12">
+
+                    <div class="col-md-6">
+
+                      <mat-form-field>
+                        <select matNativeControl placeholder="selecione o subgrupo" required [(ngModel)]="subgrupoId" name="subgrupoId">
+                          <option value="" disabled selected></option>
+                          <option value = 0 selected>Nenhum</option>
+                          <option *ngFor="let subitem of listaSubgrupo" [value]="subitem.id">
+                            {{ subitem.descricao }}
+                          </option>
+                        </select>
+                      </mat-form-field>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                      <mat-form-field>
+                        <select matNativeControl placeholder="selecione o modelo" (change)="preencherModelo()" required [(ngModel)]="modeloId" name="modeloId">
+                          <option value="" disabled selected></option>
+                          <option value = 0 selected>Nenhum</option>
+                          <option *ngFor="let tafitem of listaModeloTarifario" [value]="tafitem.id">
+                            {{ tafitem.descricao }}
+                          </option>
+                        </select>
+                      </mat-form-field>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                     <!-- <mat-form-field>
+                        <select matNativeControl placeholder="selecione o subgrupo" required [(ngModel)]="subgrupoId" name="subgrupoId">
+                          <option value="" disabled selected></option>
+                          <option value = 0 selected>Nenhum</option>
+                          <option *ngFor="let item of listaSubgrupo" [value]="item.id">
+                            {{ item.descricao }}
+                          </option>
+                        </select>
+                      </mat-form-field> -->
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div  class="card linha" *ngIf="isModelo === true">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title"> {{ subGrupo.descricao }} </h4>
+                </div>
+                <div class="card-body row">
+
+                  <div class="col-md-12">
+                    <mat-tab-group>
+
+                      <mat-tab label="TUSD">
+                        <table class="table table-sm" >
+                          <thead class="componente-bandeira" >
+                            <tr>
+                              <th>Componentes</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                          <tr *ngFor="let cp of listaPrecosTUSD">
+                            <td>
+                              <mat-form-field style="width: 200px;">
+                                <input matInput  placeholder="{{ cp.componente.descricao }}  - {{ cp.componente.tipoComponenteTarifario === 1 ? 'TE' : 'TUSD' }}" type="number" name="{{cp.componente.descricao}}"
+                                       [value]="cp.precoUnitario" [(ngModel)]="cp.precoUnitario" >
+                              </mat-form-field>
+                            </td>
+                            <td>
+
+                            </td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </mat-tab>
+
+                      <mat-tab label="TE">
+
+                        <div class="card">
+
+                          <div class="card-body row">
+
+                            <div class="row col-md-12" >
+                              <table class="table">
+                                <thead >
+                                <tr >
+
+                                    <th class="componente-bandeira">
+                                     Componente
+                                    </th>
+
+                                  <th class="bandeira-verde">
+                                    Verde
+                                    <br/>
+                                    <mat-form-field class="input-full-width" >
+                                      <input matInput  placeholder="Adicional" type="number" name="bandeira_verde"
+                                             [value]="bandeira_verde" [(ngModel)]="bandeira_verde">
+                                    </mat-form-field>
+                                  </th>
+
+                                  <th class="bandeira-amarela">
+                                    Amarela
+                                    <br/>
+                                    <mat-form-field class="input-full-width" >
+                                      <input matInput  placeholder="Adicional" type="number" name="bandeira_amarela"
+                                             [value]="bandeira_amarela" [(ngModel)]="bandeira_amarela">
+                                    </mat-form-field>
+                                  </th>
+
+                                  <th class="bandeira-vermelha">
+                                    Vermelha I
+                                    <br/>
+                                    <mat-form-field class="input-full-width" >
+                                      <input matInput  placeholder="Adicional"  type="number" name="bandeira_vermelha1"
+                                             [value]="bandeira_vermelha1" [(ngModel)]="bandeira_vermelha1">
+                                    </mat-form-field>
+                                  </th>
+
+                                  <th class="bandeira-vermelha2">
+                                    Vermelha II
+                                    <br/>
+                                    <mat-form-field class="input-full-width" >
+                                      <input matInput  placeholder="Adicional"  type="number" name="bandeira_vermelha2"
+                                             [value]="bandeira_vermelha2" [(ngModel)]="bandeira_vermelha2">
+                                    </mat-form-field>
+                                  </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let cp of listaPrecosTE">
+
+                                  <td>
+                                    <mat-form-field class="input-full-width" >
+                                      <input matInput placeholder="{{ cp.componente.descricao }}"  type="number" name="cp.componente.descricao"  [value]="cp.precoUnitario" [(ngModel)]="cp.precoUnitario">
+                                    </mat-form-field>
+                                  </td>
+
+                                  <td class="bandeira-verde">
+                                    <p> {{ calculoBandeira(cp.precoUnitario , 1) === null ? 0 :  calculoBandeira(cp.precoUnitario , 1)}} </p>
+                                  </td>
+
+                                  <td class="bandeira-amarela">
+                                    <p> {{ calculoBandeira(cp.precoUnitario , 2) === null ? 0 :  calculoBandeira(cp.precoUnitario , 2)}} </p>
+                                  </td>
+
+                                  <td class="bandeira-vermelha">
+                                    <p> {{ calculoBandeira(cp.precoUnitario , 3) === null ? 0 :  calculoBandeira(cp.precoUnitario , 3) }} </p>
+                                  </td>
+
+                                  <td class="bandeira-vermelha2">
+                                    <p> {{ calculoBandeira(cp.precoUnitario , 4) === null ? 0 :  calculoBandeira(cp.precoUnitario , 4)}} </p>
+                                  </td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            </div>
+
+
+                          </div>
+                        </div>
+
+                      </mat-tab>
+
+                    </mat-tab-group>
+                  </div>
+
+                </div>
+              </div>
+
+              <button mat-raised-button type="submit"  class="btn btn-outline-success pull-right">Confirmar</button>
+              <div class="clearfix"></div>
+
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

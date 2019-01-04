@@ -1,0 +1,150 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">{{ titulo }}
+              <button [routerLink]="['/tarifa/']"
+                      class="card-title btn btn-outline-primary btn-sm status-wrapper" >
+                <i class="material-icons">undo</i>
+              </button>
+            </h4>
+          </div>
+          <div class="card-body">
+
+            <form #form="ngForm"  >
+
+              <div class="row">
+
+                <div class="col-md-6">
+                 <!-- <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="Resolução" type="text" name="Resolução" required  [value]="resolucaoNumero" [(ngModel)]="resolucaoNumero" disabled>
+                  </mat-form-field> -->
+                  <p>
+                    <b>Resolução: </b>{{ resolucaoNumero }}
+                  </p>
+                </div>
+
+               <!-- <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="Modelo" type="text" name="modeloNome" required  [value]="modeloNome" [(ngModel)]="modeloNome" disabled>
+                  </mat-form-field>
+                </div> -->
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                 <!-- <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="Sub Grupo" type="text" name="subgrupoNome" required  [value]="subgrupoNome" [(ngModel)]="subgrupoNome" disabled>
+                  </mat-form-field> -->
+                  <p>
+                    <b>Sub Grupo: </b>{{ subgrupoNome }}
+                  </p>
+                </div>
+
+                <div class="col-md-4">
+                 <!-- <mat-form-field class="example-full-width">
+                    <input matInput  placeholder="Modalidade" type="text" name="modalidadeNome" required  [value]="modalidadeNome" [(ngModel)]="modalidadeNome" disabled>
+                  </mat-form-field> -->
+
+                  <p>
+                    <b>Modalidade: </b>{{ modalidadeNome }}
+                  </p>
+                </div>
+
+                <div class="col-md-4">
+                  <!--Semantico-->
+                </div>
+
+              </div>
+
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">TUSD</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                      <thead>
+                      <tr>
+                        <th>Descrição</th>
+                      <!--  <th>Tipo</th> -->
+                        <th>Preço</th>
+                        <!-- <th class="bandeira-verde">Bandeira Verde</th>
+                         <th class="bandeira-amarela">Bandeira Amarela</th>
+                         <th class="bandeira-vermelha">Bandeira Vermelha I</th>
+                         <th class="bandeira-vermelha2">Bandeira Vermelha II</th> -->
+                      </tr>
+                      </thead>
+                      <tbody *ngFor="let x of listaComponentes">
+                      <tr *ngIf="x.componente.tipoComponenteTarifario === 2">
+                        <td> {{ x.componente.descricao}} </td>
+                       <!-- <td> {{ x.componente.tipoComponenteTarifario === 1 ? 'TE' : 'TUSD'}} </td> -->
+                        <td> {{ x.precoUnitario }} </td>
+                        <!-- <td class="bandeira-verde"> {{ calculoBandeira( x.precoUnitario, 1) }} </td>
+                         <td class="bandeira-amarela"> {{ calculoBandeira( x.precoUnitario, 2) }} </td>
+                         <td class="bandeira-vermelha"> {{ calculoBandeira( x.precoUnitario, 3) }} </td>
+                         <td class="bandeira-vermelha2"> {{ calculoBandeira( x.precoUnitario, 4) }} </td> -->
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">TE</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <table class="table">
+                      <thead>
+                      <tr>
+                        <th>Descrição</th>
+                       <!-- <th>Tipo</th> -->
+                        <th>Preço</th>
+                        <th class="bandeira-verde">Bandeira Verde <br/>Adicional: {{bandeiraVerde}}</th>
+                        <th class="bandeira-amarela">Bandeira Amarela <br/>Adicional: {{bandeiraAmarelo}} </th>
+                        <th class="bandeira-vermelha">Bandeira Vermelha I <br/>Adicional: {{bandeiraVermelho1}}</th>
+                        <th class="bandeira-vermelha2">Bandeira Vermelha II <br/>Adicional: {{bandeiraVermelho2}}</th>
+                      </tr>
+                      </thead>
+                      <tbody *ngFor="let x of listaComponentes">
+                      <tr *ngIf="x.componente.tipoComponenteTarifario === 1">
+                        <td> {{ x.componente.descricao}} </td>
+                       <!-- <td> {{ x.componente.tipoComponenteTarifario === 1 ? 'TE' : 'TUSD'}} </td> -->
+                        <td> {{ x.precoUnitario }} </td>
+                        <td class="bandeira-verde"> {{ calculoBandeira( x.precoUnitario, 1) }} </td>
+                        <td class="bandeira-amarela"> {{ calculoBandeira( x.precoUnitario, 2) }} </td>
+                        <td class="bandeira-vermelha"> {{ calculoBandeira( x.precoUnitario, 3) }} </td>
+                        <td class="bandeira-vermelha2"> {{ calculoBandeira( x.precoUnitario, 4) }} </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <!--  <button mat-raised-button type="submit"  class="btn btn-outline-success pull-right">Confirmar</button> -->
+              <div class="clearfix"></div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
